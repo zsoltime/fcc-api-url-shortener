@@ -27,9 +27,9 @@
     "node": "8.10.0"
   },
   "scripts": {
-    "dev": "nodemon -r dotenv/config server.js",
-    "start": "node -r dotenv/config server.js",
-    "test": "jest"
+    "dev": "NODE_ENV=development nodemon -r dotenv/config server.js",
+    "start": "NODE_ENV=production node -r dotenv/config server.js",
+    "test": "NODE_ENV=test jest"
   },
   "keywords": [],
   "repository": {
