@@ -8,7 +8,6 @@ const urlSchema = mongoose.Schema(
   {
     id: {
       type: Number,
-      required: true,
       unique: true,
     },
     url: {
@@ -34,15 +33,16 @@ urlSchema.virtual('short_url').get(function getShortUrl() {
   return `http://localhost:3030/${this.id}`;
 });
 
-urlSchema.pre('save', (next) => {
+urlSchema.pre('save', function incrementCounter(next) {
   Counter.findOneAndUpdate(
     { _id: 'urlId' },
     { $inc: { seq: 1 } },
-    (err, counter) => {
+    { upsert: true, new: true },
+    (err, { seq }) => {
       if (err) {
         return next(err);
       }
-      this.id = counter.seq;
+      this.id = seq;
       return next();
     }
   );
