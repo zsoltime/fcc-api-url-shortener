@@ -11,6 +11,8 @@ const app = express();
 const db = process.env.MONGO_URI;
 
 app.use(logger);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(
   db,
