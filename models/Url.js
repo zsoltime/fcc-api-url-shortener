@@ -1,7 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-
 const Counter = require('./Counter');
 
 const urlSchema = mongoose.Schema(
@@ -24,14 +23,9 @@ const urlSchema = mongoose.Schema(
   }
 );
 
-urlSchema.query.byId = function byId(id) {
-  return this.find({ id });
+urlSchema.statics.findByShortId = function findByShortId(id) {
+  return this.findOne({ id });
 };
-
-urlSchema.virtual('short_url').get(function getShortUrl() {
-  // TODO: Use site URL instead of the hardcoded one
-  return `http://localhost:3030/${this.id}`;
-});
 
 urlSchema.pre('save', function incrementCounter(next) {
   Counter.findOneAndUpdate(
