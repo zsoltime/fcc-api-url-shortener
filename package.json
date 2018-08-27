@@ -30,7 +30,7 @@
   "scripts": {
     "dev": "NODE_ENV=development nodemon -r dotenv/config server.js",
     "start": "NODE_ENV=production node -r dotenv/config server.js",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test node -r dotenv/config ./node_modules/.bin/jest"
   },
   "keywords": [],
   "repository": {

@@ -4,11 +4,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 
+const { db, port } = require('./config');
+const errorHandler = require('./middlewares/errorHandler');
 const logger = require('./middlewares/logger');
 const routes = require('./routes');
 
 const app = express();
-const db = process.env.MONGO_URI;
 
 app.use(logger);
 app.use(express.json());
@@ -26,11 +27,12 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected to database: ${db}`);
 });
 
-app.set('port', process.env.PORT || 8000);
+app.set('port', port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
+app.use(errorHandler);
 
 module.exports = app;
