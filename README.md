@@ -4,31 +4,41 @@ This is my entry for [freeCodeCamp's third "APIs & Microservices" project][fcc-l
 
 ## User Stories
 
-- [ ] I can POST a URL to `[project_url]/api/shorturl/new` and I will receive a shortened URL in the JSON response. Example : `{ "original_url": "www.google.com","short_url": 1 }`
-- [ ] If I pass an invalid URL that doesn't follow the `http(s)://www.example.com(/more/routes)` format, the JSON response will contain an error like `{ "error": "invalid URL" }`. HINT: to be sure that the submitted url points to a valid site you can use the function `dns.lookup(host, cb)` from the `dns` core module.
-- [ ] When I visit the shortened URL, it will redirect me to my original link.
+- [x] I can POST a URL to `[project_url]/api/shorturl/new` and I will receive a shortened URL in the JSON response. Example : `{ "original_url": "www.google.com","short_url": 1 }`
+- [x] If I pass an invalid URL that doesn't follow the `http(s)://www.example.com(/more/routes)` format, the JSON response will contain an error like `{ "error": "invalid URL" }`. HINT: to be sure that the submitted URL points to a valid site you can use the function `dns.lookup(host, cb)` from the `dns` core module.
+- [x] When I visit the shortened URL, it will redirect me to my original link.
 
 ## Example Usage
 
 ```
-// TODO
+fetch('/api/shorturl/new', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json; charset=utf-8',
+  },
+  body: JSON.stringify({
+    url: 'https://www.google.com/doodles',
+  }),
+})
+  .then(res => res.json())
+  .then(res => console.log(res))
 ```
 
 ### Example Output
 
 ```json
 {
-  "original_url": "www.google.com",
-  "short_url": 1
+  "url": "https://www.google.com/doodles",
+  "short_url": "/api/shorturl/12"
 }
 ```
 
 ## API Endpoints
 
-| Method | Route | Description |
-|:---:|:---| :---|
-| POST | /api/shorturl/new | Create a short URL |
-| GET | /:id | Redirects to the original URL |
+| Method | Route             | Description                   |
+| :----: | :---------------- | :---------------------------- |
+|  POST  | /api/shorturl/new | Create a short URL            |
+|  GET   | /api/shorturl/:id | Redirects to the original URL |
 
 ## Tools Used
 
