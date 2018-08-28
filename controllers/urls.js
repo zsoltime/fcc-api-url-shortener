@@ -36,7 +36,10 @@ module.exports.get = (req, res, next) => {
       if (doc) {
         return res.redirect(301, doc.url);
       }
-      return res.status(404).json({ error: 'Not Found', status: 404 });
+      const error = new Error('Not Found');
+      error.status = 404;
+
+      return next(error);
     },
     err => next(err)
   );
