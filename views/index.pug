@@ -4,29 +4,12 @@ block content
 
   main.wrapper.wrapper--no-bottom
     section#intro
-      p URL shortener is an API built for #[a(href='https://learn.freecodecamp.org/apis-and-microservices/apis-and-microservices-projects/url-shortener-microservice', target='_blank') freeCodeCamp]. It takes any valid URL, assign a unique, short ID and returns a JSON object with a shortened URL which can be visited later.
+      p URL shortener is an API built for #[a(href='https://learn.freecodecamp.org/apis-and-microservices/apis-and-microservices-projects/url-shortener-microservice' target='_blank') freeCodeCamp]. It takes any valid URL, assign a unique, short ID and returns a JSON object with a shortened URL which can be visited later.
 
-    section#user-stories
-      h3 User Stories
-      blockquote
-        ul.stories
-          li.stories__item <input class="stories__checkbox" type="checkbox" checked disabled> I can POST a URL to <code>[project_url]/api/shorturl/new</code> and I will receive a shortened URL in the JSON response. Example : <code>{ "original_url": "www.google.com","short_url": 1 }</code>
-          li.stories__item <input class="stories__checkbox" type="checkbox" checked disabled> If I pass an invalid URL that doesn't follow the <code>http(s)://www.example.com(/more/routes)</code> format, the JSON response will contain an error like <code>{ "error": "invalid URL" }</code>. HINT: to be sure that the submitted url points to a valid site you can use the function <code>dns.lookup(host, cb)</code> from the <code>dns</code> core module.
-          li.stories__item <input class="stories__checkbox" type="checkbox" checked disabled> When I visit the shortened URL, it will redirect me to my original link.
-
-    section#usage
-      h3 Example Usage
-      p <code>// TODO</code>
-
-    section#live
-      h3 Try It Live
-      p You can even try it live below. Just start typing in the field below, hit enter and see the API response instantly.
-      <code>// TODO</code>
-
-    section#notes
-      p The example above uses the #[a(href='https://developer.mozilla.org/en/docs/Web/API/Fetch_API', target='_blank') fetch() API] to get the results via AJAX requests. It works in Chrome 42+, FireFox 39+, Safari 10+, Opera 29+, and Edge 14+ only; IE is not supported.
-      p The live preview won't work for you in Internet Explorer or really old browsers; however, you can still try the API directly.
-      p The GitHub repo is available here: #[a(href='https://github.com/zsoltime/fcc-api-url-shortener') URL Shortener]
+    include _user-stories.pug
+    include _usage.pug
+    include _live.pug
+    include _notes.pug
 
   include _footer.pug
   script(src='app.js')

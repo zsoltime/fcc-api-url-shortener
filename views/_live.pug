@@ -1,0 +1,24 @@
+section#live
+  h3 Try It Live
+  p You can even try it live below. Just type a URl below, hit enter and see the API response instantly.
+
+  form.form
+    input.form__field(type='url' name='url' required placeholder='Type/paste a link to shorten it' aria-label='URL to shorten')
+    button.form__btn(type='submit')
+      span Shorten
+      <svg version="1.1" id="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 50 50" xml:space="preserve">
+        <path fill="#fff" d="M25,6.5c-10,0-18.5,8-18.5,18.5h4c0-8,6.5-14.5,14.5-14.5V6.5z">
+          <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+        </path>
+      </svg>
+  .row
+    .col
+      p Your short URL will appear below:
+      p.short#shorturl(title='Click to copy to clipboard') https://example.com
+    .col
+      pre
+        code#response.example-code
+          | {
+          |   "url": "",
+          |   "short_url": ""
+          | }

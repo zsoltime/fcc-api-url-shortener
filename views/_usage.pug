@@ -1,0 +1,27 @@
+section#usage
+  h3 Example Usage
+  p You can use the <code>POST /api/shorturl/new</code> endpoint where you can post any valid URL in the <code>url</code> field.
+  .row
+    .col
+      h4 Example input
+      pre
+        code.example-code
+          | fetch('/api/shorturl/new', {
+          |   method: 'POST',
+          |   headers: {
+          |     'Content-Type': 'application/json; charset=utf-8',
+          |   },
+          |   body: JSON.stringify({
+          |     url: 'https://www.google.com/doodles',
+          |   }),
+          | })
+          | .then(res => res.json())
+          | .then(res => console.log(res))
+    .col
+      h4 Example output
+      pre
+        code.example-code
+          | {
+          |   "url": "https://www.google.com/doodles",
+          |   "short_url": "/api/shorturl/12"
+          | }
